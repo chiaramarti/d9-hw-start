@@ -1,25 +1,22 @@
-import { useSelector } from "react-redux";
-
-const FavoritesCompanies = () => {
-  const favoriteCompanies = useSelector((state) => state.companyFav.content);
-
-  return (
-    <div>
-      <h1>Favorites</h1>
-      <ul>
-        {favoriteCompanies.map((company) => (
-          <li key={company._id}>
-            <p>Company Name: {company.company_name}</p>
-            <ul>
-              {company.jobs.map((job) => (
-                <li key={job._id}>{job.title}</li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+const initialState = {
+  companyFav: {
+    content: [],
+  }, // Array of job objects
 };
 
-export default FavoritesCompanies;
+const mainReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "ADD_TO_FAV_COMPANY":
+      return {
+        // prima copiamo il precedente stato
+        ...state,
+        companyFav: {
+          contet: [...state.companyFav.content, action.payload],
+        },
+      };
+    default:
+      return state;
+  }
+};
+
+export default mainReducer;
