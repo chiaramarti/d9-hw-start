@@ -1,4 +1,4 @@
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
@@ -19,19 +19,20 @@ const Job = ({ data }) => {
         </a>
         </Col>
         <Col xs={3}>
-        <button
-          className="d-flex align-items-center btn"
+        <Button
+          className="p-1 me-2"
           onClick={() => {
+            // qui aggiungimo l'azienda (ovvero ricreaiamo l'array di aziende preferite)
             dispatch({
-              type: 'ADD_TO_FAV_COMPANY', 
-              payload: data._id
+              // gli diciamo a che azione deve rispondere
+              type: "ADD_TO_FAV_COMPANY",
+              // e cosa/dove deve andare a mettere l'elemento
+              payload: data,
             });
           }}
         >
-          <span className="me-2">
-          {data.isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-          </span>
-        </button>
+          ADD FAVOURITE
+        </Button>
       </Col>
     </Row>
   );
