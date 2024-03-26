@@ -4,7 +4,7 @@ import { FaHeart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 
 const FavCompaniesIndicator = () => {
-  const favoriteCompanies = useSelector(state => state.companyFav.content);
+  const favoriteCompanies = useSelector(state => state.favorite.content);
   const navigate = useNavigate();
 
   return (

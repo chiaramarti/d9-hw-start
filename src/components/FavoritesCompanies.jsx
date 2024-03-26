@@ -3,7 +3,7 @@ import { Button, Container, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const FavoritesCompanies = () => {
-  const favoriteCompanies = useSelector((state) => state.companyFav.content)
+  const favoriteCompanies = useSelector((state) => state.favorite.content)
   
   const dispatch = useDispatch();
 
@@ -18,6 +18,9 @@ const FavoritesCompanies = () => {
     <Container>
       <div className="d-flex justify-content-between align-items-center">
         <h1 className="display-4 my-3">Your Favorites Companies</h1>
+        <Link to="/">
+          <Button variant="outline-secondary p-2">Go Back</Button>
+        </Link>
       </div>
       <ListGroup>
         {favoriteCompanies.map((companies, index) => {
